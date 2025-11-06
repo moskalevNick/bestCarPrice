@@ -1,6 +1,6 @@
 import {Context} from "grammy";
 import {InlineKeyboard} from "grammy";
-import startupConfig from 'startup.json';
+import startupConfig from '../../startup.json';
 
 export const getTypes = async (ctx: Context) => {
     await ctx.answerCallbackQuery();

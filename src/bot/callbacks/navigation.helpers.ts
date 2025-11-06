@@ -1,4 +1,4 @@
-import rawStartupConfig from 'startup.json';
+import rawStartupConfig from '../../startup.json';
 import {Context, InlineKeyboard} from "grammy";
 import {SearchParams, StartupConfig} from "./types";
 
