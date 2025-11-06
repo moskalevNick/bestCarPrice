@@ -1,0 +1,49 @@
+{
+  "cars": {
+    "title": "авто",
+    "brands": {
+      "audi": {
+        "title": "Audi",
+        "models": {
+          "a4": {
+            "search_params": {
+              "brand": "6",
+              "model": "5810"
+            }
+          },
+          "a6": {
+            "search_params": {
+              "brand": "6",
+              "model": "5811"
+            }
+          }
+        }
+      },
+      "skoda": {
+        "search_params": {
+          "brand": "1126"
+        }
+      },
+      "volkswagen": {
+        "models": {
+          "golf": {
+            "search_params": {
+              "brand": "1216",
+              "model": "5908"
+            }
+          }
+        }
+      }
+    }
+  },
+  "moto": {
+    "title": "мотоциклы",
+    "brands": {
+      "harley davidson": {
+        "search_params": {
+          "brand": "2774"
+        }
+      }
+    }
+  }
+}
