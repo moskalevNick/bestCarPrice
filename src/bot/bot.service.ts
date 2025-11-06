@@ -48,8 +48,4 @@ export class BotService implements OnModuleInit, OnModuleDestroy {
 
         this.bot.on('message', (ctx) => ctx.reply('Echo: ' + ctx.message.text));
     }
-
-    getBotInstance() {
-        return this.bot;
-    }
 }
