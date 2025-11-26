@@ -3,7 +3,8 @@ import {ConfigService} from '@nestjs/config';
 import {Bot, Context, InlineKeyboard} from 'grammy';
 import {handleNavigation, handleStart} from "./callbacks/handelNavigation";
 import {aboutUs} from "./callbacks/aboutUs";
-import {getTypes} from "./callbacks/getTypes"; // Добавьте этот импорт
+import {getTypes} from "./callbacks/getTypes";
+import {testReq} from "./callbacks/testReq"; // Добавьте этот импорт
 
 @Injectable()
 export class BotService implements OnModuleInit, OnModuleDestroy {
@@ -33,7 +34,8 @@ export class BotService implements OnModuleInit, OnModuleDestroy {
         this.bot.command("start", async (ctx) => {
             const inlineKeyboard = new InlineKeyboard()
                 .text("Категории обьявлений", "get_types").row()
-                .text("О сервисе", "about_us");
+                .text("О сервисе", "about_us").row()
+                .text("test req av", "test_req")
 
             await ctx.reply("Добро пожаловать! Выберите действие:", {
                 reply_markup: inlineKeyboard,
@@ -45,6 +47,7 @@ export class BotService implements OnModuleInit, OnModuleDestroy {
         this.bot.callbackQuery(/^nav_/, handleNavigation);
         this.bot.callbackQuery("start", handleStart);
         this.bot.callbackQuery("about_us", aboutUs);
+        this.bot.callbackQuery("test_req", testReq);
 
         this.bot.on('message', (ctx) => ctx.reply('Echo: ' + ctx.message.text));
     }
