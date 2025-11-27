@@ -1,10 +1,11 @@
 import {Injectable, OnModuleInit, OnModuleDestroy} from '@nestjs/common';
 import {ConfigService} from '@nestjs/config';
 import {Bot, Context, InlineKeyboard} from 'grammy';
-import {handleNavigation, handleStart} from "./callbacks/handelNavigation";
+import {handleNavigationBrands, handleStart} from "./callbacks/handleNavigationBrands";
 import {aboutUs} from "./callbacks/aboutUs";
 import {getTypes} from "./callbacks/getTypes";
-import {testReq} from "./callbacks/testReq"; // Добавьте этот импорт
+import {testReq} from "./callbacks/testReq";
+import {handleNavigationModels} from "./callbacks/handleNavigationModels"; // Добавьте этот импорт
 
 @Injectable()
 export class BotService implements OnModuleInit, OnModuleDestroy {
@@ -43,11 +44,12 @@ export class BotService implements OnModuleInit, OnModuleDestroy {
         });
 
         // Регистрируем все обработчики коллбэков
-        this.bot.callbackQuery("get_types", getTypes); // Добавьте эту строку
-        this.bot.callbackQuery(/^nav_/, handleNavigation);
+        this.bot.callbackQuery("get_types", getTypes);
+        this.bot.callbackQuery(/^nav_brands_/, handleNavigationBrands);
+        this.bot.callbackQuery(/^nav_models_/, handleNavigationModels);
         this.bot.callbackQuery("start", handleStart);
         this.bot.callbackQuery("about_us", aboutUs);
-        this.bot.callbackQuery("test_req", testReq);
+        // this.bot.callbackQuery("test_req", testReq);
 
         this.bot.on('message', (ctx) => ctx.reply('Echo: ' + ctx.message.text));
     }

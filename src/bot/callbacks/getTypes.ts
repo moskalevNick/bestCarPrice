@@ -1,9 +1,23 @@
 import {Context} from "grammy";
 import {InlineKeyboard} from "grammy";
 import startupConfig from '../../startup.json';
+import axios from "axios";
+import process from "node:process";
 
 export const getTypes = async (ctx: Context) => {
     await ctx.answerCallbackQuery();
+
+    const startupConfigResponse = await axios.get(`${process.env.TEST_URL}/brands/getAll`, {
+        headers: {
+            "User-Agent": 'E-power'
+        },
+        auth: {
+            username: process.env.USERNAME || '',
+            password: process.env.PASSWORD || '',
+        }
+    })
+
+    const startupConfig = startupConfigResponse.data
 
     // Получаем ключи из конфига (cars, moto)
     const types = Object.keys(startupConfig);
@@ -11,9 +25,9 @@ export const getTypes = async (ctx: Context) => {
 
     // Для каждого типа создаем кнопку
     types.forEach(type => {
-        const typeData = (startupConfig as any)[type];
-        const title = typeData.title || type;
-        keyboard.text(title, `nav_${type}`).row();
+        const typeData = startupConfig[type];
+        const title = typeData.name || type;
+        keyboard.text(title, `nav_brands_${typeData.id}`).row();
     });
 
     // Добавляем кнопку "Назад"

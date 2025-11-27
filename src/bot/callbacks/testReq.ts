@@ -4,7 +4,7 @@ import * as process from "node:process";
 export const testReq = async (ctx) => {
     await ctx.answerCallbackQuery();
     try {
-        const response = process.env.TEST_URL ? await axios.get(process.env.TEST_URL, {
+        const response = process.env.TEST_URL ? await axios.get(`${process.env.TEST_URL}/brands/brandTree/10297`, {
             headers: {
                 "User-Agent": 'E-power'
             },
