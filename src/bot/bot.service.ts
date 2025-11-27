@@ -47,7 +47,7 @@ export class BotService implements OnModuleInit, OnModuleDestroy {
         this.bot.callbackQuery(/^nav_brands_/, handleNavigationBrands);
         this.bot.callbackQuery(/^nav_models_/, handleNavigationModels);
         this.bot.callbackQuery("start", handleStart);
-        // this.bot.callbackQuery("about_us", aboutUs);
+        this.bot.callbackQuery("about_us", aboutUs);
         // this.bot.callbackQuery("test_req", testReq);
 
         this.bot.on('message', (ctx) => ctx.reply('Echo: ' + ctx.message.text));
