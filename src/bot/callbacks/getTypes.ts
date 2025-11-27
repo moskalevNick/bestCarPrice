@@ -9,7 +9,9 @@ export const getTypes = async (ctx: Context) => {
 
     const startupConfigResponse = await axios.get(`${process.env.TEST_URL}/brands/getAll`, {
         headers: {
-            "User-Agent": 'E-power'
+            "User-Agent": 'E-power',
+            "x-user-id": `${ctx.from?.id}`,
+            "x-chat-id": `${ctx.me.id}`,
         },
         auth: {
             username: process.env.USERNAME || '',

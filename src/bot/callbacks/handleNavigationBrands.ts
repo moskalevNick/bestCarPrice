@@ -21,15 +21,15 @@ export const handleStart = async (ctx: Context) => {
     }
 };
 
-export const handleNavigationBrands = async (ctx: any): Promise<void> => {
-    const callbackData = ctx.callbackQuery.data;
+export const handleNavigationBrands = async (ctx: Context): Promise<void> => {
+    const callbackData = ctx.callbackQuery?.data;
 
     if (callbackData === "start") {
         await handleStart(ctx);
         return;
     }
 
-    if (!callbackData.startsWith('nav_')) {
+    if (!callbackData?.startsWith('nav_')) {
         await ctx.reply("❌ Неизвестная команда");
         return;
     }
@@ -39,7 +39,7 @@ export const handleNavigationBrands = async (ctx: any): Promise<void> => {
     const brandRes = await axios.get(`${process.env.TEST_URL}/brands/brandTree/${id}`, {
         headers: {
             "User-Agent": 'E-power',
-            "x-user-id": `${ctx.from.id}`,
+            "x-user-id": `${ctx.from?.id}`,
             "x-chat-id": `${ctx.me.id}`,
         },
         auth: {

@@ -21,15 +21,15 @@ export const handleStart = async (ctx: Context) => {
     }
 };
 
-export const handleNavigationModels = async (ctx: any): Promise<void> => {
-    const callbackData = ctx.callbackQuery.data;
+export const handleNavigationModels = async (ctx: Context): Promise<void> => {
+    const callbackData = ctx.callbackQuery?.data;
 
     if (callbackData === "start") {
         await handleStart(ctx);
         return;
     }
 
-    if (!callbackData.startsWith('nav_')) {
+    if (!callbackData?.startsWith('nav_')) {
         await ctx.reply("❌ Неизвестная команда");
         return;
     }
