@@ -36,7 +36,7 @@ export class BotService implements OnModuleInit, OnModuleDestroy {
             const inlineKeyboard = new InlineKeyboard()
                 .text("Категории обьявлений", "get_types").row()
                 .text("О сервисе", "about_us").row()
-                .text("test req av", "test_req")
+            // .text("test req av", "test_req")
 
             await ctx.reply("Добро пожаловать! Выберите действие:", {
                 reply_markup: inlineKeyboard,
