@@ -35,7 +35,7 @@ export const handleNavigationBrands = async (ctx: any): Promise<void> => {
     }
 
     const id = callbackData.replace('nav_brands_', '').split('_')[0];
-
+//TODO catch errors
     const brandRes = await axios.get(`${process.env.TEST_URL}/brands/brandTree/${id}`, {
         headers: {
             "User-Agent": 'E-power',
