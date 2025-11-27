@@ -3,11 +3,14 @@ import * as process from "node:process";
 
 export const testReq = async (ctx) => {
     await ctx.answerCallbackQuery();
-
     try {
         const response = process.env.TEST_URL ? await axios.get(process.env.TEST_URL, {
             headers: {
                 "User-Agent": 'E-power'
+            },
+            auth: {
+                username: process.env.USERNAME || '',
+                password: process.env.PASSWORD || '',
             }
         }) : await axios.get('https://api.av.by/offer-types/cars/landings/filter', {
             headers: {
