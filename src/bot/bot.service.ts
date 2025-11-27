@@ -4,7 +4,6 @@ import {Bot, Context, InlineKeyboard} from 'grammy';
 import {handleNavigationBrands, handleStart} from "./callbacks/handleNavigationBrands";
 import {aboutUs} from "./callbacks/aboutUs";
 import {getTypes} from "./callbacks/getTypes";
-import {testReq} from "./callbacks/testReq";
 import {handleNavigationModels} from "./callbacks/handleNavigationModels"; // Добавьте этот импорт
 
 @Injectable()
