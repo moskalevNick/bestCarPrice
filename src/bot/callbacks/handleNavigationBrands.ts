@@ -39,8 +39,7 @@ export const handleNavigationBrands = async (ctx: Context): Promise<void> => {
     const brandRes = await axios.get(`${process.env.TEST_URL}/brands/brandTree/${id}`, {
         headers: {
             "User-Agent": 'E-power',
-            "x-user-id": `${ctx.from?.id}`,
-            "x-chat-id": `${ctx.me.id}`,
+            "x-user-id": `${ctx.me.id}`,
         },
         auth: {
             username: process.env.USERNAME || '',
